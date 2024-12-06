@@ -1,0 +1,33 @@
+.events-section {
+    margin-top: 20px;
+  }
+  
+  .events-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: none;  /* Removes default list bullet points */
+    padding-left: 0;        /* Removes default padding */
+  }
+  
+  li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  strong {
+    font-size: 18px;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  
+  em {
+    font-style: italic;
+  }
+  

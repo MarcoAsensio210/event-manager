@@ -1,0 +1,68 @@
+<div class="details-container">
+    <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" class="loading-spinner"></mat-progress-spinner>
+  
+    <mat-card *ngIf="!isLoading && venue" class="venue-details-card">
+      <mat-card-title>{{ venue.name }}</mat-card-title>
+      <mat-card-subtitle>{{ venue.city }}, {{ venue.state }}</mat-card-subtitle>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-list-item><strong>ID:</strong> {{ venue.venueID }}</mat-list-item>
+        <mat-list-item><strong>Address:</strong> {{ venue.address }}</mat-list-item>
+        <mat-list-item><strong>Capacity:</strong> {{ venue.capacity }}</mat-list-item>
+        <mat-list-item *ngIf="venue.contactNumber"><strong>Contact:</strong> {{ venue.contactNumber }}</mat-list-item>
+        <mat-list-item *ngIf="venue.email"><strong>Email:</strong> {{ venue.email }}</mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
+    </mat-card>
+  
+    <div class="events-section">
+        <h2>Events</h2>
+        <ul>
+          <li *ngFor="let event of events">
+            <div>
+              <strong>{{ event.name }}</strong> - {{ event.date | date:'shortDate' }}
+              <p *ngIf="event.description">{{ event.description }}</p>
+              <p *ngIf="event.organizer"><em>Organizer:</em> {{ event.organizer }}</p>
+              <p *ngIf="event.ticketPrice"><em>Ticket Price:</em> ${{ event.ticketPrice }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+  
+    <mat-card class="event-form-card">
+      <mat-card-title>Add New Event</mat-card-title>
+      <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
+        <mat-form-field appearance="fill">
+          <mat-label>Event Name</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Date</mat-label>
+          <input matInput type="date" formControlName="date" required />
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Organizer</mat-label>
+          <input matInput formControlName="organizer" />
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Ticket Price</mat-label>
+          <input matInput type="number" formControlName="ticketPrice" />
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" type="submit" [disabled]="eventForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Submitting...' : 'Add Event' }}
+        </button>
+      </form>
+      
+    </mat-card>
+  </div>
+  

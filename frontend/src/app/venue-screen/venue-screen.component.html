@@ -1,0 +1,67 @@
+<div class="venue-container">
+  <h1>Welcome to the Event App</h1>
+  <button [routerLink]="['/venueForm']">
+    Create Venue
+  </button>
+    <mat-progress-spinner
+      *ngIf="isLoading"
+      mode="indeterminate"
+      class="loading-spinner">
+    </mat-progress-spinner>
+  
+    <mat-table *ngIf="!isLoading" [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="venueID">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.venueID}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.name}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.address}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.city}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.state}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="capacity">
+        <mat-header-cell *matHeaderCellDef> Capacity </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.capacity}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="contactNumber">
+        <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.contactNumber}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let venue"> {{venue.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+  
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button [routerLink]="['/venueDetail', element.venueID]" class="details-button">
+            <p>Details</p>
+          </button>
+        </td>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  

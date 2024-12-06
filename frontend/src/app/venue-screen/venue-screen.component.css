@@ -1,0 +1,14 @@
+.venue-container {
+    padding: 16px;
+  }
+  
+  .loading-spinner {
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mat-elevation-z8 {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
